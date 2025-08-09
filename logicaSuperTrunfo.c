@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 int main() {
@@ -26,8 +25,8 @@ float densidade2;
 float ppc2;
 float superpoder2;
 int atributo1, atributo2;
-float soma_carta1 = 0;
-float soma_carta2 = 0;
+int vitoriacarta1 = 0;
+int vitoriacarta2 = 0;
 
 
 printf("Você ira usar 2 cartas nessa rodada.\n");
@@ -42,7 +41,7 @@ scanf("%s", estado1);
 printf("Agora junto com a letra de seu estado, escolha um numero de 01 a 04 e forme o codigo de seu estado (exemplo: A02) :\n");
 scanf("%s", codigo1);
 
-printf("Qual o nome da cidade da sua primeira carta\n");
+printf("Qual o nome da cidade da sua primeira carta?(Sem espaço, Ex:VoltaRedonda)\n");
 scanf("%s", cidade1);
 
 printf("Qual o tamanho da população da sua primeira carta?\n");
@@ -67,7 +66,7 @@ scanf("%s", estado2);
 printf("Agora junto com a letra de seu estado, escolha um numero de 01 a 04 e forme o codigo de seu estado (exemplo: A02) :\n");
 scanf("%s", codigo2);
 
-printf("Qual o nome da cidade da sua segunda carta\n");
+printf("Qual o nome da cidade da sua segunda carta?(Sem espaço, Ex:VoltaRedonda)\n");
 scanf("%s", cidade2);
 
 printf("Qual o tamanho da população da sua segunda carta?\n");
@@ -141,8 +140,7 @@ if (atributo1 == atributo2) {
 
 switch (atributo1) {
      case 1:
-    soma_carta1 += (float)populacao1;
-        soma_carta2 += (float)populacao2;
+
     printf("primeiro atributo escolhido:\n");
     printf("====Batalha Individual====\n");
     printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -151,9 +149,12 @@ switch (atributo1) {
     printf("População da carta 2: %lu\n", populacao2);
     if(populacao1 > populacao2) {
         printf("A carta 1 venceu na batalha individual.\n");
+        vitoriacarta1++;
     } else if(populacao1 < populacao2) {
         printf("A carta 2 venceu na batalha individual.\n");
-    }else {
+        vitoriacarta2++;
+    }
+    else {
         printf("As cartas empataram na batalha individual.\n");
     }
 
@@ -161,8 +162,7 @@ switch (atributo1) {
 break;
     
      case 2: 
-        soma_carta1 += area1;
-        soma_carta2 += area2;
+
     printf("primeiro atributo escolhido:\n");
     printf("====Batalha Individual====\n");
     printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -171,16 +171,17 @@ break;
     printf("Área da carta 2: %.2f Km²\n", area2);
     if(area1 > area2) {
         printf("A carta 1 venceu na batalha individual.\n");
+        vitoriacarta1++;
     } else if(area1 < area2) {
         printf("A carta 2 venceu na batalha individual.\n");
+        vitoriacarta2++;
     } else {
         printf("As cartas empataram na batalha individual.\n");
     }
      
         break;
     case 3:
-        soma_carta1 += pib1;
-        soma_carta2 += pib2;
+
     printf("primeiro atributo escolhido:\n");
     printf("====Batalha Individual====\n");
     printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -189,15 +190,16 @@ break;
     printf("PIB da carta 2: R$ %.2lf\n", pib2);
     if(pib1 > pib2) {
         printf("A carta 1 venceu na batalha individual.\n");
+        vitoriacarta1++;
     } else if(pib1 < pib2) {
         printf("A carta 2 venceu na batalha individual.\n");
+        vitoriacarta2++;
     } else {
         printf("As cartas empataram na batalha individual.\n");
     }
         break;
     case 4:
-        soma_carta1 += (float)pontosTuristicos1;
-        soma_carta2 += (float)pontosTuristicos2;
+
     printf("primeiro atributo escolhido:\n");
     printf("====Batalha Individual====\n");
     printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -206,16 +208,17 @@ break;
     printf("Pontos Turísticos da carta 2: %d\n", pontosTuristicos2);
     if(pontosTuristicos1 > pontosTuristicos2) {
         printf("A carta 1 venceu na batalha individual.\n");
+        vitoriacarta1++;
     } else if(pontosTuristicos1 < pontosTuristicos2) {
         printf("A carta 2 venceu na batalha individual.\n");
+        vitoriacarta2++;
     } else {
         printf("As cartas empataram na batalha individual.\n");
     }
         break;
     case 5:
     
-        soma_carta1 += (1.0f / densidade1);  // quanto menor a densidade, maior o valor somado
-        soma_carta2 += (1.0f / densidade2);
+
     printf("primeiro atributo escolhido:\n");
     printf("====Batalha Individual====\n");
     printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -225,8 +228,10 @@ break;
 
     if(densidade1 < densidade2) { // quanto menor a densidade, maior o valor somado
         printf("A carta 1 venceu na batalha individual.\n");
+        vitoriacarta1++;
     } else if(densidade1 > densidade2) {
         printf("A carta 2 venceu na batalha individual.\n");
+        vitoriacarta2++;
     } else {
         printf("As cartas empataram na batalha individual.\n");
     }
@@ -238,8 +243,7 @@ break;
 // Soma do segundo atributo
 switch (atributo2) {
     case 1:
-        soma_carta1 += (float)populacao1;
-        soma_carta2 += (float)populacao2;
+
         printf("Segundo atributo escolhido:\n");
         printf("====Batalha Individual====\n");
         printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -248,15 +252,16 @@ switch (atributo2) {
         printf("População da carta 2: %lu\n", populacao2);
         if(populacao1 > populacao2) {
             printf("A carta 1 venceu na batalha individual.\n");
+            vitoriacarta1++;
         } else if(populacao1 < populacao2) {
             printf("A carta 2 venceu na batalha individual.\n");
+            vitoriacarta2++;
         } else {
             printf("As cartas empataram na batalha individual.\n");
         }
         break;
     case 2:
-        soma_carta1 += area1;
-        soma_carta2 += area2;
+
         printf("Segundo atributo escolhido:\n");
         printf("====Batalha Individual====\n");
         printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -265,15 +270,16 @@ switch (atributo2) {
         printf("Área da carta 2: %.2f Km²\n", area2);
         if(area1 > area2) {
             printf("A carta 1 venceu na batalha individual.\n");
+            vitoriacarta1++;
         } else if(area1 < area2) {
             printf("A carta 2 venceu na batalha individual.\n");
+            vitoriacarta2++;
         } else {
             printf("As cartas empataram na batalha individual.\n");
         }
         break;
     case 3:
-        soma_carta1 += pib1;
-        soma_carta2 += pib2;
+
         printf("Segundo atributo escolhido:\n");
         printf("====Batalha Individual====\n");
         printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -282,15 +288,16 @@ switch (atributo2) {
         printf("PIB da carta 2: R$ %.2lf\n", pib2);
         if(pib1 > pib2) {
             printf("A carta 1 venceu na batalha individual.\n");
+            vitoriacarta1++;
         } else if(pib1 < pib2) {
             printf("A carta 2 venceu na batalha individual.\n");
+            vitoriacarta2++;
         } else {
             printf("As cartas empataram na batalha individual.\n");
         }
         break;
     case 4:
-        soma_carta1 += (float)pontosTuristicos1;
-        soma_carta2 += (float)pontosTuristicos2;
+
         printf("Segundo atributo escolhido:\n");
         printf("====Batalha Individual====\n");
         printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -299,15 +306,16 @@ switch (atributo2) {
         printf("Pontos Turísticos da carta 2: %d\n", pontosTuristicos2);
         if(pontosTuristicos1 > pontosTuristicos2) {
             printf("A carta 1 venceu na batalha individual.\n");
+             vitoriacarta1++;
         } else if(pontosTuristicos1 < pontosTuristicos2) {
             printf("A carta 2 venceu na batalha individual.\n");
+             vitoriacarta2++;
         } else {
             printf("As cartas empataram na batalha individual.\n");
         }
         break;
     case 5:
-        soma_carta1 += (1.0f / densidade1);
-        soma_carta2 += (1.0f / densidade2);
+
         printf("Segundo atributo escolhido:\n");
         printf("====Batalha Individual====\n");
         printf("Estado %s X Estado %s\n", estado1, estado2);
@@ -316,8 +324,10 @@ switch (atributo2) {
         printf("Densidade Populacional da carta 2: %.2f hab/Km²\n", densidade2);
         if(densidade1 < densidade2) {
             printf("A carta 1 venceu na batalha individual.\n");
+            vitoriacarta1++;
         } else if(densidade1 > densidade2) {
             printf("A carta 2 venceu na batalha individual.\n");
+            vitoriacarta2++;
         } else {
             printf("As cartas empataram na batalha individual.\n");
         }
@@ -327,14 +337,11 @@ switch (atributo2) {
         return 1; // Encerra o programa se o atributo for inválido
 }
 printf("====Resultado Final:====\n");
-printf("Soma dos atributos da carta 1: %.2f\n", soma_carta1);
-printf("Soma dos atributos da carta 2: %.2f\n", soma_carta2);
-printf("%s\n", 
-    (soma_carta1 > soma_carta2) ? "A carta 1 venceu a batalha final!" :
-    (soma_carta1 < soma_carta2) ? "A carta 2 venceu a batalha final!" :
-    "As cartas empataram na batalha final!");
-
-
+printf("%s\n",
+    (vitoriacarta1 > vitoriacarta2) ? "A carta 1 venceu a batalha final!" :
+    (vitoriacarta1 < vitoriacarta2) ? "A carta 2 venceu a batalha final!" :
+    "As cartas empataram na batalha final!"
+);
 
 return 0;
 
